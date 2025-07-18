@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="stylesheet" href="{{ 'vendor.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'spacings.css' | asset_url }}">
+    <link href="{{ 'theme-fonts.css' | asset_url }}" rel="stylesheet" />
+    <link href="{{ 'base.css' | asset_url }}" rel="stylesheet" />
+    <link href="{{ 'animate.css' | asset_url }}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    {{ content_for_header }}
+  </head>
+
+  <body>
+    {{ content_for_layout }}
+    <script src="{{ 'vendor.js' | asset_url }}"></script>
+    <script src="{{ 'theme.js' | asset_url }}"></script>
+  </body>
+</html>

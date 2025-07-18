@@ -1,0 +1,62 @@
+{% comment %} 
+
+
+
+
+
+
+{% schema %}
+    {
+      "name": "t:sections.buy_box.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.buy_box.settings.heading.name"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.buy_box.settings.text.name"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.buy_box.settings.button.name",
+          "default": "Shop now"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "slide",
+          "name": "t:sections.buy_box.blocks.slide.name",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "t:sections.buy_box.blocks.slide.settings.image.name"
+            }
+          ]
+        },
+        {
+          "type": "wisti a_video",
+          "name": "Video Block (Wistia)",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "video_id",
+              "label": "Wistia Video ID",
+              "default": "getx3xc27m"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "t:sections.test.presets.name"
+        }
+      ]
+    }
+    {% endschema %} {% endcomment %}

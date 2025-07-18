@@ -1,0 +1,30 @@
+.banner-media video, .video-banner video {
+    width: 100%;
+    display: block;
+}
+.banner-text--heading {
+    color: var(--heading-color);
+    font-size: var(--text-heading-font-size, 38px);
+    font-weight: var(--text-heading-font-weight, 300);
+    text-transform: var(--text-heading-transform, normal);
+    margin-top: var(--text-heading-mt, 0);
+    margin-bottom: var(--text-heading-mb, 0);
+}
+.banner-text--des {
+    margin-top: var(--text-mt);
+    margin-bottom: var(--text-mb);
+}
+.banner-text--des span{
+    background-color: var(--base-color);
+}
+.it_img {
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+@media(max-width:767px){
+    .banner-text--heading {
+        font-size: var(--text-heading-font-size-mob, 28px);
+        font-weight: var(--text-heading-font-weight-mob, 300);
+    }
+}

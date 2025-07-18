@@ -1,0 +1,36 @@
+<link href="{{ 'announcement-bar.css' | asset_url }}" rel="stylesheet" type="text/css">
+<div id="announcement-bar" class="announcement-bar"
+    style="--ans-bar-font-size:16px; --anc-bar-font-weight :400;">
+        <div class="container">
+            <div class="announcement-bar-content text-center">
+                {{ settings.heading }} <a href="{{ settings.button_link }}">{{ settings.button_name }}</a>                 
+            </div>       
+        </div>
+</div>
+{% schema %}
+    {
+        "name": "t:sections.announcement.name",
+        "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.announcement.settings.heading.name"
+        },
+        {
+          "type": "text",
+          "id": "button_name",
+          "label": "t:sections.announcement.settings.button_name.name"  
+        }, 
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.announcement.settings.button_link.name"  
+        }
+        ],
+        "presets": [
+            {
+                "name": "t:sections.announcement.presets.name"
+            }
+        ]
+    }
+    {% endschema %}

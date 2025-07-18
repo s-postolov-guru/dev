@@ -1,0 +1,48 @@
+<link href="{{ 'marquee-logos.css' | asset_url }}" rel="stylesheet" type="text/css">
+<div class="qure__section qure__logos color-background" style="--section-padding-top: 40px; 
+         --section-padding-bottom: 40px; 
+         --section-background:#F6F6F7;
+         --section-padding-top-mob:30px;
+         --section-padding-bottom-mob:30px">
+        <div class="container">
+            <div class="row align-items-center text-center">
+                <div class="marquee-row">
+                    <div class="marquee-block marquee1">
+                        <ul class="marquee-item-list">
+                            {% for block in section.blocks %}
+                                {% if block.type == "image" %} 
+                                    <li>
+                                        <img src="{{ block.settings.image | image_url }}" alt="vogue" />
+                                    </li>
+                                {% endif %} 
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% schema %}
+    {
+      "name": "t:sections.logos.name",
+      "blocks": [
+        {
+          "type": "image",
+          "name": "t:sections.logos.blocks.image.name",
+          "limit": 6,
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "t:sections.logos.blocks.image.settings.image.name"
+            }      
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "t:sections.logos.presets.name"
+        }
+      ]
+    }
+    {% endschema %}

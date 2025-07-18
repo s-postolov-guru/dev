@@ -1,0 +1,171 @@
+<link href="{{ 'eye-patch.css' | asset_url }}" rel="stylesheet" type="text/css">
+    <div class="eye-patch-care qure__section"
+        style="--section-padding-top:80px;--section-padding-bottom:80px; --section-padding-top-mob:30px;--section-padding-bottom-mob:30px;">
+        <div class="container container-small" style="--container-width:980px">
+            <div class="qure__section-header text-center mb-60">
+                {% if section.settings.heading %}
+                    <h2 class="qure__section-heading">{{ section.settings.heading }}</h2>
+                {% endif %}      
+            </div>
+            <div class="d-flex custom__grid" style="--column-gap:40px; --column-gap-mobile:0px;">
+                <div class="col custom__block">
+                    <div class="patch-card-block">
+                        {% for block in section.blocks %}
+                            {% if block.type == 'check_image' and block.settings.check_image != blank %}
+                                <div class="patch-card-img mb-md-24 overflow-hidden position-relative">
+                                    <img src="{{ block.settings.check_image | image_url }}" alt="Micro-Infusion Targeted Patches" class="img-fluid rounded-10 w-100">
+                                </div>
+                            {% endif %}  
+                        {% endfor %}
+                        <div class="patch-card-content">
+                            <div class="text-center my-30">
+                                {% for block in section.blocks %}
+                                    {% if block.type == 'check_heading' and block.settings.check_heading != blank %}
+                                      <h4>{{ block.settings.check_heading }}</h4>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if section.settings.vs != blank %}
+                    <div class="patch-versus-col custom__block">
+                        <div class="patch-versus">{{section.settings.vs}}</div>
+                    </div>
+                {% endif %}
+                <div class="col custom__block">
+                    <div class="patch-card-block">
+                        {% for block in section.blocks %}
+                            {% if block.type == 'cross_image' and block.settings.cross_image %}
+                                <div class="patch-card-img mb-md-24 overflow-hidden position-relative">
+                                    <img src="{{ block.settings.cross_image | image_url }}" alt="Micro-Infusion Targeted Patches" class="img-fluid rounded-10 w-100">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="patch-card-content">
+                            <div class="text-center my-30">
+                                {% for block in section.blocks %}
+                                    {% if block.type == 'cross_heading' and block.settings.cross_heading != blank %}
+                                      <h4>{{ block.settings.cross_heading }}</h4>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex custom__grid patch-list-row justify-content-between"
+            style="--column-gap:40px; --column-gap-mobile:20px;">
+                <div class="col custom__block d-flex flex-column gap-3">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'check_text' and block.settings.check_text != blank %}
+                        <div class="patch-list patch-check">{{ block.settings.check_text }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col custom__block d-flex flex-column gap-3">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'cross_text' and block.settings.cross_text != blank %}
+                        <div class="patch-list patch-cross">{{ block.settings.cross_text }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+{%  schema  %} 
+{
+"name": "t:sections.eye_patches.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.eye_patches.settings.heading.name"
+        },
+        {
+          "type": "text",
+          "id": "vs",
+          "label": "t:sections.eye_patches.settings.vs.name",
+          "default": "VS"
+        }
+      ],
+      "blocks": [
+        {
+            "type": "check_image",
+            "name": "t:sections.eye_patches.blocks.check.settings.image.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "check_image",
+                    "label": "t:sections.eye_patches.blocks.check.settings.image.name"
+                }
+            ]
+        },
+        {
+            "type": "cross_image",
+            "name": "t:sections.eye_patches.blocks.cross.settings.image.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "cross_image",
+                    "label": "t:sections.eye_patches.blocks.cross.settings.image.name"
+                }
+            ]
+        },
+        {
+            "type": "check_heading",
+            "name": "t:sections.eye_patches.blocks.check.settings.heading.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "check_heading",
+                    "label": "t:sections.eye_patches.blocks.check.settings.heading.name"
+                }
+            ]
+        },
+        {
+            "type": "cross_heading",
+            "name": "t:sections.eye_patches.blocks.cross.settings.heading.name",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "cross_heading",
+                    "label": "t:sections.eye_patches.blocks.cross.settings.heading.name"
+                }
+            ]
+        },
+        {
+            "type": "check_text",
+            "name": "t:sections.eye_patches.blocks.check.settings.text.name",
+            "limit": 5,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "check_text",
+                    "label": "t:sections.eye_patches.blocks.check.settings.text.name"
+                }
+            ]
+        },
+        {
+            "type": "cross_text",
+            "name": "t:sections.eye_patches.blocks.cross.settings.text.name",
+            "limit": 5,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "cross_text",
+                    "label": "t:sections.eye_patches.blocks.cross.settings.text.name"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "t:sections.eye_patches.presets.name"
+        }
+      ]
+}
+{% endschema %}

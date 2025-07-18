@@ -1,0 +1,123 @@
+<div id="ingredients" class="hypo_acid qure__section"
+        style="--section-padding-top: 80px; --section-padding-bottom: 80px; --section-padding-top-mob: 50px; --section-padding-bottom-mob: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    {% for block in section.blocks %}
+                        {% if block.type == "image" %}
+                            <div class="hypo_acid_img">
+                                <img src="{{ block.settings.image | image_url }}" alt="" class="img-fluid d-none d-md-block">
+                                <img src="{{ block.settings.image_mobile | image_url }}" alt="" class="img-fluid d-md-none">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-7 d-flex justify-content-center align-items-center pt-30 pt-md-0">
+                    <div class="hypo_acid_content pl-md-40">
+                        {% if section.settings.heading != blank %}
+                            <h2 class="qure__section-heading text-md-start pb-20">{{ section.settings.heading }}</h2>
+                        {% endif %}
+                        {% if section.settings.text != blank %}
+                            {{ section.settings.text 
+                                    | replace: '<strong>', '<span style="background:#C7E5DB">' 
+                                    | replace: '</strong>', '</span>' 
+                                    | replace: '<p>', ''
+                                    | replace: '</p>', ''}}
+                        {% endif %}
+                        <!-- popup modal  -->
+                        <link href="assets/popup-modal.css" rel="stylesheet">
+                        <div class="ctm_modal_derm_mist">
+                            <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered" style="--bs-modal-width: 1150px;">
+                                    <div class="modal-content p-30 pt-5 pr-5 rounded-0">
+                                        <div class="modal-header border-0 p-0">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                                        </div>
+                                        <div class="modal-body p-0">
+                                            {% if section.settings.heading_popup != blank %}
+                                                <h5 class="modal-title fs-16 fw-600 fm-body mb-4"
+                                                id="exampleModalToggleLabel">{{ section.settings.heading_popup }}</h5>
+                                            {% endif %}
+                                            {% if section.settings.text_popup != blank %}
+                                                {{ section.settings.text_popup | replace: '<p>', '<p class="fs-16 fw-400 fm-body">'}}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn color-background text-black border-0 fs-18 fw-500 btn-center-mob mt-20"
+                        {% if section.settings.url !=" blank" and section.settings.button != blank%}
+                            data-bs-toggle="modal" href="{{ section.settings.url }}" role="button">{{ section.settings.button }}</a>
+                        {% endif %}
+                           
+                        <!-- popup modal end  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% schema %}
+    {
+      "name": "t:sections.ingredients.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.ingredients.settings.heading.name"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.ingredients.settings.text.name"
+        },
+        {
+          "type": "text",
+          "id": "heading_popup",
+          "label": "t:sections.ingredients.settings.heading_popup.name"
+        },
+        {
+          "type": "richtext",
+          "id": "text_popup",
+          "label": "t:sections.ingredients.settings.text_popup.name"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "t:sections.ingredients.settings.button.name",
+          "default": "View Full Ingredient List"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "t:sections.ingredients.settings.url.name"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "name": "t:sections.ingredients.blocks.image.name",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "t:sections.ingredients.blocks.image.settings.image.name"
+            },
+            {
+              "type": "image_picker",
+              "id": "image_mobile",
+              "label": "t:sections.ingredients.blocks.image.settings.image_mobile.name"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "t:sections.ingredients.presets.name"
+        }
+      ]
+    }
+    {% endschema %}
